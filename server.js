@@ -11,7 +11,7 @@ const PORT = process.env.PORT
 // middleware. this will look into the requst body and parsin json format
 app.use(express.json())
 app.use(cors({
-    origin:["http://localhost:5173/","https://mern-project-weimei.onrender.com/"]
+    origin:["http://localhost:8080/","https://mern-project-weimei.onrender.com/"]
 }))
 // routes
 app.use('/api/records', recordRoutes)
