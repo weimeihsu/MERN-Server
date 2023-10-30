@@ -3,9 +3,12 @@ const mongoose = require('mongoose')
 
 // get all records
 const getAllRecords = async(req, res)=>{
-    const records = await recordSchema.find({}).sort({createdAt: -1})
-    
-    res.status(200).json(records)
+    try{
+        const records = await recordSchema.find({}).sort({createdAt: -1})
+        res.status(200).json(records)
+    }catch(err){
+        res.status(400).json({error: err.message})
+    }
 }
 // get a single record
 const getSingleRecord = async(req, res)=>{
@@ -58,7 +61,6 @@ const deleteSingleRecord = async (req, res)=>{
     }
     res.status(200).json(singleRecord)
 }
-
 // update a signle record
 const updateSingleRecord = async (req, res)=>{
     const {id} = req.params
