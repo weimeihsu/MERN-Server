@@ -10,6 +10,12 @@ const PORT = process.env.PORT
 
 // middleware. this will look into the requst body and parsin json format
 app.use(express.json())
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+    next();
+  })
 app.use(cors({
     origin:['http://localhost:5173/','https://1st-react.web.app/','https://mern-project-weimei.onrender.com']
 }))
