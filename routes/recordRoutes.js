@@ -15,6 +15,6 @@ router.post('/', createRecord)
 router.delete('/:id', deleteSingleRecord)
 
 // UPDATE a single item
-router.patch('/:id', updateSingleRecord)
+router.put('/:id', updateSingleRecord)
 
 module.exports = router
