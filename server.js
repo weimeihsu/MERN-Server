@@ -4,9 +4,12 @@ const mongoose = require('mongoose')
 const siteRoutes = require('./routes/siteRoutes')
 const domainRoutes = require('./routes/domainRoutes')
 const recordRoutes = require('./routes/recordRoutes')
-const cors = require("cors")
-const app = express()
+const shopItemRoutes = require('./routes/shopItemRoute')
+const cors = require('cors')
+const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
 const PORT = process.env.PORT
+const app = express()
+
 
 // middleware. this will look into the requst body and parsin json format
 app.use(express.json())
@@ -23,6 +26,7 @@ app.use(cors({
 app.use('/api/records', recordRoutes)
 app.use('/api/sites', siteRoutes)
 app.use('/api/domains', domainRoutes)
+app.use('/api/shopItems', shopItemRoutes)
 
 // connect to mongo DB
 mongoose.connect(process.env.MONGO_URI)

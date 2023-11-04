@@ -28,18 +28,6 @@ const createRecord = async(req, res) =>{
 
     const {title, category} = req.body
 
-    // let emptyFields = []
-
-    // if(!title){
-    //     return emptyFields.push('title')
-    // }
-    // if(!category){
-    //     return emptyFields.push('category')
-    // }
-    // if(emptyFields.length>0){
-    //     return res.status(404).json({error: 'please fill in ' + emptyFields})
-    // }
-    // add record to mongodb
     try{
         const record = await recordSchema.create({title, category})
         res.status(200).json(record)
