@@ -14,6 +14,10 @@ const shopItemSchema = new Schema({
     category: {
         type:String,
         required: true
+    },
+    inventory: {
+        type:Number,
+        require: true
     }
 }, {timestamps: true})
 

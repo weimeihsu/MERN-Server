@@ -23,7 +23,7 @@ const getSingleShopItem = async(req, res)=>{
 // create a new shopItem
 const createShopItem = async(req, res) =>{
 
-    const { name, price, category } = req.body
+    const { name, price, category, inventory } = req.body
 
     // let emptyFields = []
 
@@ -38,7 +38,7 @@ const createShopItem = async(req, res) =>{
     // }
     // add shopItem to mongodb
     try{
-        const shopItem = await shopItemSchema.create({name, price, category})
+        const shopItem = await shopItemSchema.create({name, price, category, inventory})
         res.status(200).json(shopItem)
     } catch(err){
         res.status(400).json({error: err.message})
