@@ -6,6 +6,7 @@ const getAllRecords = async(req, res)=>{
     try{
         const records = await recordSchema.find({}).sort({createdAt: -1})
         res.status(200).json(records)
+        // redis cache
     }catch(err){
         res.status(400).json({error: err.message})
     }
