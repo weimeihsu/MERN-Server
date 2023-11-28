@@ -1,12 +1,23 @@
-require('dotenv').config()
-const express = require('express')
-const mongoose = require('mongoose')
-const siteRoutes = require('./routes/siteRoutes')
-const domainRoutes = require('./routes/domainRoutes')
-const recordRoutes = require('./routes/recordRoutes')
-const shopItemRoutes = require('./routes/shopItemRoute')
-const stripeRoutes = require('./routes/stripeRoutes')
-const cors = require('cors')
+import dotenv from 'dotenv'
+dotenv.config()
+import express from 'express'
+import mongoose from 'mongoose'
+import cors from 'cors'
+import siteRoutes from './routes/siteRoutes.js'
+import domainRoutes from './routes/domainRoutes.js'
+import recordRoutes from './routes/recordRoutes.js'
+import shopItemRoutes from './routes/shopItemRoutes.js'
+import stripeRoutes from './routes/stripeRoutes.js'
+
+// require('dotenv').config()
+// const express = require('express')
+// const mongoose = require('mongoose')
+// const cors = require('cors')
+// const siteRoutes = require('./routes/siteRoutes')
+// const domainRoutes = require('./routes/domainRoutes')
+// const recordRoutes = require('./routes/recordRoutes')
+// const shopItemRoutes = require('./routes/shopItemRoute')
+// const stripeRoutes = require('./routes/stripeRoutes')
 
 const PORT = process.env.PORT
 const app = express()

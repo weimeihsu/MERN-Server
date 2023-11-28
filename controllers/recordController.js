@@ -1,5 +1,7 @@
-const recordSchema = require('../models/recordModel')
-const mongoose = require('mongoose')
+import recordSchema from '../models/recordModel.js'
+import mongoose from 'mongoose'
+// const recordSchema = require('../models/recordModel')
+// const mongoose = require('mongoose')
 
 // get all records
 const getAllRecords = async(req, res)=>{
@@ -63,6 +65,10 @@ const updateSingleRecord = async (req, res)=>{
     }
     res.status(200).json(singleRecordUpdate)
 }
-module.exports = {
+// module.exports = {
+//     createRecord, getSingleRecord, getAllRecords, deleteSingleRecord, updateSingleRecord
+// }
+
+export {
     createRecord, getSingleRecord, getAllRecords, deleteSingleRecord, updateSingleRecord
 }

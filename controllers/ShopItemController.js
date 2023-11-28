@@ -1,5 +1,7 @@
-const shopItemSchema = require('../models/shopItemModel')
-const mongoose = require('mongoose')
+import shopItemSchema from '../models/shopItemModel.js'
+import mongoose from 'mongoose'
+// const shopItemSchema = require('../models/shopItemModel')
+// const mongoose = require('mongoose')
 
 // get all shopItems
 const getAllShopItems = async(req, res)=>{
@@ -72,6 +74,8 @@ const updateSingleShopItem = async (req, res)=>{
     }
     res.status(200).json(singleShopItemUpdate)
 }
-module.exports = {
-    createShopItem, getSingleShopItem, getAllShopItems, deleteSingleShopItem, updateSingleShopItem
-}
+// module.exports = {
+//     createShopItem, getSingleShopItem, getAllShopItems, deleteSingleShopItem, updateSingleShopItem
+// }
+
+export { createShopItem, getSingleShopItem, getAllShopItems, deleteSingleShopItem, updateSingleShopItem }

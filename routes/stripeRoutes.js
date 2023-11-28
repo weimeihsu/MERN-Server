@@ -1,6 +1,12 @@
-require('dotenv').config()
-const express = require('express')
-const Stripe = require('stripe')
+import dotenv from 'dotenv'
+dotenv.config()
+import express from 'express'
+import Stripe from 'stripe'
+
+// require('dotenv').config()
+// const express = require('express')
+// const Stripe = require('stripe')
+
 const router = express.Router()
 const stripe = Stripe(process.env.STRIPE_SECRET_KEY)
 
@@ -35,4 +41,5 @@ const createPayment = async (req, res) =>{
 // POST a purchase
 router.post('/', createPayment)
 
-module.exports = router
+// module.exports = router
+export default router

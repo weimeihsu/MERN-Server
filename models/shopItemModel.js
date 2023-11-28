@@ -1,4 +1,5 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
+// const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
 
@@ -21,4 +22,5 @@ const shopItemSchema = new Schema({
     }
 }, {timestamps: true})
 
-module.exports = mongoose.model('shopItemSchema', shopItemSchema)
+// module.exports = mongoose.model('shopItemSchema', shopItemSchema)
+export default mongoose.model('shopItemSchema', shopItemSchema)

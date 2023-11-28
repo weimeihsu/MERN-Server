@@ -1,4 +1,5 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
+// const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
 
@@ -13,4 +14,5 @@ const recordSchema = new Schema({
     }
 }, {timestamps: true})
 
-module.exports = mongoose.model('recordSchema', recordSchema)
+// module.exports = mongoose.model('recordSchema', recordSchema)
+export default mongoose.model('recordSchema', recordSchema)

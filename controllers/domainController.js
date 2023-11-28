@@ -1,5 +1,7 @@
-const domainSchema = require('../models/domainModel')
-const mongoose = require('mongoose')
+import domainSchema from '../models/domainModel.js'
+import mongoose from 'mongoose'
+// const domainSchema = require('../models/domainModel')
+// const mongoose = require('mongoose')
 
 // get all domains
 const getAllDomains = async(req, res)=>{
@@ -72,6 +74,8 @@ const updateSingleDomain = async (req, res)=>{
     }
     res.status(200).json(singleDomainUpdate)
 }
-module.exports = {
-    createDomain, getSingleDomain, getAllDomains, deleteSingleDomain, updateSingleDomain
-}
+// module.exports = {
+//     createDomain, getSingleDomain, getAllDomains, deleteSingleDomain, updateSingleDomain
+// }
+
+export { createDomain, getSingleDomain, getAllDomains, deleteSingleDomain, updateSingleDomain}

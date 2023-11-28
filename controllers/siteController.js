@@ -1,5 +1,7 @@
-const siteSchema = require('../models/siteModel')
-const mongoose = require('mongoose')
+import siteSchema from '../models/siteModel.js'
+import mongoose from 'mongoose'
+// const siteSchema = require('../models/siteModel')
+// const mongoose = require('mongoose')
 
 // get all sites
 const getAllSites = async(req, res)=>{
@@ -72,6 +74,7 @@ const updateSingleSite = async (req, res)=>{
     }
     res.status(200).json(singleSiteUpdate)
 }
-module.exports = {
-    createSite, getSingleSite, getAllSites, deleteSingleSite, updateSingleSite
-}
+// module.exports = {
+//     createSite, getSingleSite, getAllSites, deleteSingleSite, updateSingleSite
+// }
+ export { createSite, getSingleSite, getAllSites, deleteSingleSite, updateSingleSite }

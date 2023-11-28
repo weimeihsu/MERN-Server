@@ -1,5 +1,9 @@
-const express = require('express')
-const { createDomain, getSingleDomain, getAllDomains, deleteSingleDomain, updateSingleDomain } = require('../controllers/domainController')
+import express from 'express'
+import { createDomain, getSingleDomain, getAllDomains, deleteSingleDomain, updateSingleDomain } from '../controllers/domainController.js'
+
+// const express = require('express')
+// const { createDomain, getSingleDomain, getAllDomains, deleteSingleDomain, updateSingleDomain } = require('../controllers/domainController')
+
 const router = express.Router()
 
 // GET all items
@@ -17,4 +21,5 @@ router.delete('/:id', deleteSingleDomain)
 // UPDATE a single item
 router.patch('/:id', updateSingleDomain)
 
-module.exports = router
+// module.exports = router
+export default router

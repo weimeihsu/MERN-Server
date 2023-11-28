@@ -1,4 +1,5 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
+// const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
 
@@ -13,4 +14,6 @@ const domainSchema = new Schema({
     }
 }, {timestamps: true})
 
-module.exports = mongoose.model('domainSchema', domainSchema)
+// module.exports = mongoose.model('domainSchema', domainSchema)
+export default mongoose.model('domainSchema', domainSchema)
+

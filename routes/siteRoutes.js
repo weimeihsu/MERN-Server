@@ -1,5 +1,9 @@
-const express = require('express')
-const { createSite, getSingleSite, getAllSites, deleteSingleSite, updateSingleSite } = require('../controllers/siteController')
+import express from 'express'
+import { createSite, getSingleSite, getAllSites, deleteSingleSite, updateSingleSite } from '../controllers/siteController.js'
+
+// const express = require('express')
+// const { createSite, getSingleSite, getAllSites, deleteSingleSite, updateSingleSite } = require('../controllers/siteController')
+
 const router = express.Router()
 
 // GET all items
@@ -17,4 +21,5 @@ router.delete('/:id', deleteSingleSite)
 // UPDATE a single item
 router.patch('/:id', updateSingleSite)
 
-module.exports = router
+// module.exports = router
+export default router

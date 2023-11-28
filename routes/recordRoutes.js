@@ -1,5 +1,9 @@
-const express = require('express')
-const { createRecord, getSingleRecord, getAllRecords, deleteSingleRecord, updateSingleRecord } = require('../controllers/recordController')
+import express from 'express'
+import { createRecord, getSingleRecord, getAllRecords, deleteSingleRecord, updateSingleRecord } from '../controllers/recordController.js'
+
+// const express = require('express')
+// const { createRecord, getSingleRecord, getAllRecords, deleteSingleRecord, updateSingleRecord } = require('../controllers/recordController')
+
 const router = express.Router()
 
 // GET all items
@@ -17,4 +21,5 @@ router.delete('/:id', deleteSingleRecord)
 // UPDATE a single item
 router.put('/:id', updateSingleRecord)
 
-module.exports = router
+// module.exports = router
+export default router
