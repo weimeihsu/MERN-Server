@@ -5,7 +5,7 @@ const siteRoutes = require('./routes/siteRoutes')
 const domainRoutes = require('./routes/domainRoutes')
 const recordRoutes = require('./routes/recordRoutes')
 const shopItemRoutes = require('./routes/shopItemRoute')
-const checkOutRoutes = require('./routes/checkOutRoutes')
+const stripeRoutes = require('./routes/stripeRoutes')
 const cors = require('cors')
 
 const PORT = process.env.PORT
@@ -28,7 +28,7 @@ app.use('/api/records', recordRoutes)
 app.use('/api/sites', siteRoutes)
 app.use('/api/domains', domainRoutes)
 app.use('/api/shopItems', shopItemRoutes)
-app.use('/checkout', checkOutRoutes)
+app.use('/api/checkout', stripeRoutes)
 // connect to mongo DB
 mongoose.connect(process.env.MONGO_URI)
     .then(()=>{
