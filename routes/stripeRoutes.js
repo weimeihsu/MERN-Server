@@ -13,7 +13,7 @@ const createPayment = async (req, res) =>{
                 product_data:{
                     name: item.name,
                 },
-                unit_amount: item.price
+                unit_amount: item.price * 100
             },
             quantity: item.quantity
         }
@@ -23,8 +23,8 @@ const createPayment = async (req, res) =>{
             payment_method_types:['card'],
             mode:'payment',
             line_items: storeItems,
-            success_url:`${process.env.CLIENT_URL}/checkout-success`,
-            cancel_url:`${process.env.CLIENT_URL}/checkout-failed`
+            success_url:`${process.env.CLIENT_URL}/checkout/checkout-success`,
+            cancel_url:`${process.env.CLIENT_URL}/checkout/checkout-failed`
         })
         res.send({url:session.url})
     } catch(err){
