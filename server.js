@@ -8,6 +8,7 @@ import domainRoutes from './routes/domainRoutes.js'
 import recordRoutes from './routes/recordRoutes.js'
 import shopItemRoutes from './routes/shopItemRoutes.js'
 import stripeRoutes from './routes/stripeRoutes.js'
+import userRoutes from './routes/userRoutes.js'
 
 // require('dotenv').config()
 // const express = require('express')
@@ -22,9 +23,11 @@ import stripeRoutes from './routes/stripeRoutes.js'
 const PORT = process.env.PORT
 const app = express()
 
-
-// middleware. this will look into the requst body and parsin json format
+// express.json() this will look into the requst body and parsin json format It parses incoming requests with JSON payloads and is based on body-parser.
 app.use(express.json())
+// urlencoded parses incoming requests with URL-encoded payloads and is based on a body parser.
+app.use(express.urlencoded({extended: true}))
+
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
@@ -40,6 +43,7 @@ app.use('/api/sites', siteRoutes)
 app.use('/api/domains', domainRoutes)
 app.use('/api/shopItems', shopItemRoutes)
 app.use('/api/checkout', stripeRoutes)
+app.use('/api/users', userRoutes)
 // connect to mongo DB
 mongoose.connect(process.env.MONGO_URI)
     .then(()=>{

@@ -24,21 +24,8 @@ const getSingleSite = async(req, res)=>{
 }
 // create a new site
 const createSite = async(req, res) =>{
-
     const { sitename } = req.body
 
-    // let emptyFields = []
-
-    // if(!title){
-    //     return emptyFields.push('title')
-    // }
-    // if(!category){
-    //     return emptyFields.push('category')
-    // }
-    // if(emptyFields.length>0){
-    //     return res.status(404).json({error: 'please fill in ' + emptyFields})
-    // }
-    // add site to mongodb
     try{
         const site = await siteSchema.create({sitename})
         res.status(200).json(site)
