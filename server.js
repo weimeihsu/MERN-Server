@@ -3,6 +3,7 @@ dotenv.config()
 import express from 'express'
 import mongoose from 'mongoose'
 import cors from 'cors'
+import cookieParser from 'cookie-parser'
 import siteRoutes from './routes/siteRoutes.js'
 import domainRoutes from './routes/domainRoutes.js'
 import recordRoutes from './routes/recordRoutes.js'
@@ -25,6 +26,7 @@ const app = express()
 
 // express.json() this will look into the requst body and parsin json format It parses incoming requests with JSON payloads and is based on body-parser.
 app.use(express.json())
+app.use(cookieParser())
 // urlencoded parses incoming requests with URL-encoded payloads and is based on a body parser.
 app.use(express.urlencoded({extended: true}))
 
