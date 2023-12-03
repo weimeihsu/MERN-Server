@@ -5,9 +5,9 @@ import generateToken from '../util/generateToken.js'
 const authUser = asyncHandler(async (req, res) =>{
     const {email, password} = req.body
 
-    const userEmail = await userSchema.findOne({email})
+    const user = await userSchema.findOne({email})
 
-    if(userEmail && (await user.matchPasswords(password))){
+    if(user && (await user.matchPassword(password))){
         generateToken(res, user._id)
         res.status(200).json(user)
     } else {
@@ -44,7 +44,13 @@ const logoutUser = asyncHandler(async (req, res) =>{
 
 // route GET /api/users/profile
 const getUserProfile = asyncHandler(async (req, res) =>{
-    res.status(200).json({message:'User Profile'})
+
+    // const req.body will return all data of this user. destructure the user and only get back necessary info
+    const user = {
+        _id: req.user._id,
+        email: req.user.email
+    }
+    res.status(200).json(user)
 })
 
 // route PUT /api/users/profile
