@@ -1,7 +1,7 @@
 import asyncHandler from 'express-async-handler'
 import userSchema from '../models/userModel.js'
-import generateToken from '../util/generateToken.js'
-// route POST /api/users/auth
+import generateToken from '../utils/generateToken.js'
+// route POST /api/users/auth -> this is login
 const authUser = asyncHandler(async (req, res) =>{
     const {email, password} = req.body
 
@@ -17,6 +17,8 @@ const authUser = asyncHandler(async (req, res) =>{
 
 // route POST /api/users = create a user
 const registerUser = asyncHandler(async (req, res) =>{
+    // console.log(req.body)
+    
     const { email, password } = req.body
     const userExist = await userSchema.findOne({email})
 
@@ -44,7 +46,6 @@ const logoutUser = asyncHandler(async (req, res) =>{
 
 // route GET /api/users/profile
 const getUserProfile = asyncHandler(async (req, res) =>{
-
     // const req.body will return all data of this user. destructure the user and only get back necessary info
     const user = {
         _id: req.user._id,
@@ -55,7 +56,18 @@ const getUserProfile = asyncHandler(async (req, res) =>{
 
 // route PUT /api/users/profile
 const updateUserProfile = asyncHandler(async (req, res) =>{
-    res.status(200).json({message:'Update User Profile'})
+    const user = await userSchema.findById(req.user._id)
+
+    if(user){
+        user.email = req.body.email || user.email
+        if(req.body.password){
+            user.password = req.body.password
+        }
+        const updatedUser = await user.save()
+        res.status(200).json(updatedUser)
+    } else {
+        res.status(401).json({message:'User not found'})
+    }
 })
 
 export { authUser, registerUser, logoutUser, getUserProfile, updateUserProfile }

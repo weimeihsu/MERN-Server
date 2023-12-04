@@ -1,5 +1,6 @@
-// import dotenv from 'dotenv'
-// dotenv.config()
+import dotenv from 'dotenv'
+dotenv.config()
+// the two lines above are neccessary event though they are incldued in server.js
 import express from 'express'
 import Stripe from 'stripe'
 
