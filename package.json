@@ -23,6 +23,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.4.1",
     "npm": "^10.2.4",
+    "openai": "^4.20.1",
     "stripe": "^14.3.0"
   },
   "devDependencies": {

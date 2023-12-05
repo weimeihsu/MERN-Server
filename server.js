@@ -10,7 +10,7 @@ import recordRoutes from './routes/recordRoutes.js'
 import shopItemRoutes from './routes/shopItemRoutes.js'
 import stripeRoutes from './routes/stripeRoutes.js'
 import userRoutes from './routes/userRoutes.js'
-
+import openaiRoutes from './routes/openaiRoutes.js'
 // require('dotenv').config()
 // const express = require('express')
 // const mongoose = require('mongoose')
@@ -46,6 +46,7 @@ app.use('/api/domains', domainRoutes)
 app.use('/api/shopItems', shopItemRoutes)
 app.use('/api/checkout', stripeRoutes)
 app.use('/api/users', userRoutes)
+app.use('/api/openai', openaiRoutes)
 // connect to mongo DB
 mongoose.connect(process.env.MONGO_URI)
     .then(()=>{
