@@ -15,7 +15,7 @@ const generateImage = async (req, res) =>{
     try{
         const resAiImage = await openai.images.generate({
             model: "dall-e-3",
-            prompt:"cat on a coffee cup",
+            prompt:"have change the content but not working",
             n: 1,
             size: imageSize,
         })
