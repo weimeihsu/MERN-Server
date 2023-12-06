@@ -7,24 +7,26 @@ const openai = new OpenAI({
 })
 
 const generateImage = async (req, res) =>{
-    const { prompt, size } = req.body
-
+    const { size, prompt } = req.body
+    
     const imageSize =
     size === 'small' ? '256x256' : size === 'medium' ? '512x512' : '1024x1024'
-
+    
+    const myPrompt = prompt
+    
     try{
-        const resAiImage = await openai.images.generate({
-            model: "dall-e-3",
-            prompt:"have change the content but not working",
+        const response = await openai.images.generate({
+            model: "dall-e-2",
+            prompt:myPrompt,
             n: 1,
             size: imageSize,
         })
         
-        const imgUrl = resAiImage.data[0].url
-
+        const imgUrl = response.data[0].url
+        
         res.status(200).json({
-            success: true,
-            data: imgUrl
+            success:true,
+            data:imgUrl
         })
     }catch(err){
         if (err.response) {
