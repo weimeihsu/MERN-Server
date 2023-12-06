@@ -15,7 +15,7 @@ const generateImage = async (req, res) =>{
     try{
         const resAiImage = await openai.images.generate({
             model: "dall-e-3",
-            prompt,
+            prompt:"test the key",
             n: 1,
             size: imageSize,
         })
