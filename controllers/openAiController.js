@@ -10,13 +10,13 @@ const generateImage = async (req, res) =>{
     const { size, prompt } = req.body
     
     const imageSize =
-    size === 'small' ? '256x256' : size === 'medium' ? '512x512' : '1024x1024'
+    size === 'small' ? '1024x1024' : size === 'medium' ? '1792x1024' : '1024x1792'
     
     const myPrompt = prompt
     
     try{
         const response = await openai.images.generate({
-            model: "dall-e-2",
+            model: "dall-e-3",
             prompt:myPrompt,
             n: 1,
             size: imageSize,
