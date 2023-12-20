@@ -5,7 +5,7 @@ const Schema = mongoose.Schema
 
 const recordSchema = new Schema({
     title: {
-        type:String,
+        type: String,
         required: true
     },
     category: {

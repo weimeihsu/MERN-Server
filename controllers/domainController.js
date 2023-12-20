@@ -27,20 +27,8 @@ const createDomain = async(req, res) =>{
 
     const { sitename, domainname } = req.body
 
-    // let emptyFields = []
-
-    // if(!title){
-    //     return emptyFields.push('title')
-    // }
-    // if(!category){
-    //     return emptyFields.push('category')
-    // }
-    // if(emptyFields.length>0){
-    //     return res.status(404).json({error: 'please fill in ' + emptyFields})
-    // }
-    // add domain to mongodb
     try{
-        const domain = await domainSchema.create({sitename,domainname})
+        const domain = await domainSchema.create({sitename, domainname})
         res.status(200).json(domain)
     } catch(err){
         res.status(400).json({error: err.message})

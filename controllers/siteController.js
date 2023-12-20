@@ -27,7 +27,7 @@ const createSite = async(req, res) =>{
     const { sitename } = req.body
 
     try{
-        const site = await siteSchema.create({sitename})
+        const site = await siteSchema.create({ sitename })
         res.status(200).json(site)
     } catch(err){
         res.status(400).json({error: err.message})

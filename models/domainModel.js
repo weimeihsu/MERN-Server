@@ -5,11 +5,11 @@ const Schema = mongoose.Schema
 
 const domainSchema = new Schema({
     sitename: {
-        type:String,
+        type: String,
         required: true
     },
     domainname: {
-        type:String,
+        type: String,
         required: true
     }
 }, {timestamps: true})
