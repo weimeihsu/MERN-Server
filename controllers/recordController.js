@@ -6,7 +6,7 @@ import mongoose from 'mongoose'
 // get all records
 const getAllRecords = async(req, res)=>{
     try{
-        const records = await recordSchema.find({}).sort({createdAt: -1})
+        const records = await recordSchema.find({}).sort({updatedAt: -1})
         res.status(200).json(records)
         // redis cache
     }catch(err){
