@@ -22,13 +22,26 @@ const getSingleDomain = async(req, res)=>{
     }
     res.status(200).json(singleDomain)
 }
+// get domains by sitename
+const getDomainsBySite = async(req, res)=>{
+    const { site } = req.params
+    // if(!mongoose.Types.ObjectId.isValid(site)){
+    //     return res.status(404).json({error:'no such id'})
+    // }
+    const multiDomains = await domainSchema.findOne(site)
+
+    if(!multiDomains){
+        return res.status(404).json({error: 'no such domains'})
+    }
+    res.status(200).json(multiDomains)
+}
 // create a new domain
 const createDomain = async(req, res) =>{
 
     const { sitename, domainname } = req.body
-
+    // const { domain } = req.body
     try{
-        const domain = await domainSchema.create({sitename, domainname})
+        const domain = await domainSchema.create({ sitename, domainname })
         res.status(200).json(domain)
     } catch(err){
         res.status(400).json({error: err.message})
@@ -66,4 +79,4 @@ const updateSingleDomain = async (req, res)=>{
 //     createDomain, getSingleDomain, getAllDomains, deleteSingleDomain, updateSingleDomain
 // }
 
-export { createDomain, getSingleDomain, getAllDomains, deleteSingleDomain, updateSingleDomain}
+export { createDomain, getSingleDomain, getAllDomains, deleteSingleDomain, updateSingleDomain, getDomainsBySite}
