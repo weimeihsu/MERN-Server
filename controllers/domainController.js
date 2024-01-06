@@ -24,16 +24,14 @@ const getSingleDomain = async(req, res)=>{
 }
 // get domains by sitename
 const getDomainsBySite = async(req, res)=>{
-    const { site } = req.params
-    // if(!mongoose.Types.ObjectId.isValid(site)){
-    //     return res.status(404).json({error:'no such id'})
-    // }
-    const multiDomains = await domainSchema.findOne(site)
-
-    if(!multiDomains){
-        return res.status(404).json({error: 'no such domains'})
+    
+    try{
+        const { sitename } = req.query
+        const domains = await domainSchema.find({sitename})
+        res.status(200).json(domains)
+    }catch(err){
+        res.status(404).json(err.message)
     }
-    res.status(200).json(multiDomains)
 }
 // create a new domain
 const createDomain = async(req, res) =>{

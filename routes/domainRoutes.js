@@ -10,19 +10,21 @@ const router = express.Router()
 router.get('/', getAllDomains)
 
 // GET a single item
-router.get('/:id', getSingleDomain)
-
-// GET multi items
-router.get('/:site', getDomainsBySite)
+// router.get('/domain/:id', getSingleDomain)
 
 // POST a new item
 router.post('/', createDomain)
 
 // DELETE a single item
-router.delete('/:id', deleteSingleDomain)
+// router.delete('/domain/:id', deleteSingleDomain)
 
 // UPDATE a single item
-router.patch('/:id', updateSingleDomain)
+// router.patch('/domain/:id', updateSingleDomain)
+
+router.route('/domain/:id').get(getSingleDomain).delete(deleteSingleDomain).patch(updateSingleDomain)
+
+// GET multi items
+router.get('/categroy', getDomainsBySite)
 
 // module.exports = router
 export default router
