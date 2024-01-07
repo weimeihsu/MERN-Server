@@ -23,11 +23,24 @@ const getSingleDomain = async(req, res)=>{
     res.status(200).json(singleDomain)
 }
 // get domains by sitename
-const getDomainsBySite = async(req, res)=>{
-    
+const domainFilter = async(req, res)=>{
     try{
         const { sitename } = req.query
         const domains = await domainSchema.find({sitename})
+        res.status(200).json(domains)
+    }catch(err){
+        res.status(404).json(err.message)
+    }
+}
+const searchDomains = async(req, res)=>{
+    try{
+        const { domainname } = req.query 
+        // this is a descructure of { domanname : value }
+        const domains = await domainSchema.find({
+            '$or':[
+                {domainname:{$regex:`${domainname}`, $options:'i'}},
+                // {sitename:{$regex:`${sitename}`, $options:'i'}}
+            ]})
         res.status(200).json(domains)
     }catch(err){
         res.status(404).json(err.message)
@@ -77,4 +90,4 @@ const updateSingleDomain = async (req, res)=>{
 //     createDomain, getSingleDomain, getAllDomains, deleteSingleDomain, updateSingleDomain
 // }
 
-export { createDomain, getSingleDomain, getAllDomains, deleteSingleDomain, updateSingleDomain, getDomainsBySite}
+export { createDomain, getSingleDomain, getAllDomains, deleteSingleDomain, updateSingleDomain, domainFilter, searchDomains}

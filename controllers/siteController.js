@@ -64,4 +64,4 @@ const updateSingleSite = async (req, res)=>{
 // module.exports = {
 //     createSite, getSingleSite, getAllSites, deleteSingleSite, updateSingleSite
 // }
- export { createSite, getSingleSite, getAllSites, deleteSingleSite, updateSingleSite }
+export { createSite, getSingleSite, getAllSites, deleteSingleSite, updateSingleSite }
