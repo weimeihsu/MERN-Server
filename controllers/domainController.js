@@ -35,11 +35,11 @@ const domainFilter = async(req, res)=>{
 const searchDomains = async(req, res)=>{
     try{
         const { domainname } = req.query 
-        // this is a descructure of { domanname : value }
+        // this is a descructure of { domainname : value }
         const domains = await domainSchema.find({
             '$or':[
                 {domainname:{$regex:`${domainname}`, $options:'i'}},
-                // {sitename:{$regex:`${sitename}`, $options:'i'}}
+                // {domainname:{$regex:`${domainname}`, $options:'i'}},
             ]})
         res.status(200).json(domains)
     }catch(err){
