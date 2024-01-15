@@ -24,7 +24,7 @@ router.post('/', createDomain)
 router.route('/domain/:id').get(getSingleDomain).delete(deleteSingleDomain).patch(updateSingleDomain)
 
 // filter by site and search in domains
-router.get('/categroy', domainFilter)
+router.get('/:site', domainFilter)
 router.get('/search', searchDomains)
 // module.exports = router
 export default router

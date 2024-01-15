@@ -6,7 +6,6 @@ import mongoose from 'mongoose'
 // get all domains
 const getAllDomains = async(req, res)=>{
     const domains = await domainSchema.find({}).sort({createdAt: -1})
-    
     res.status(200).json(domains)
 }
 // get a single domain
@@ -25,8 +24,8 @@ const getSingleDomain = async(req, res)=>{
 // get domains by sitename
 const domainFilter = async(req, res)=>{
     try{
-        const { sitename } = req.query
-        const domains = await domainSchema.find({sitename})
+        const { site } = req.params
+        const domains = await domainSchema.find({sitename:site})
         res.status(200).json(domains)
     }catch(err){
         res.status(404).json(err.message)
