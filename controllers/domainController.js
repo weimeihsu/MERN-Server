@@ -25,7 +25,6 @@ const getSingleDomain = async(req, res)=>{
 const domainFilter = async(req, res)=>{
     try{
         const { site } = req.params
-        const { domainname } = req.query
         const domains = await domainSchema.find({sitename:site})
         res.status(200).json(domains)
     }catch(err){
@@ -34,6 +33,7 @@ const domainFilter = async(req, res)=>{
 }
 const searchDomains = async(req, res)=>{
     try{
+        console.log(req.query)
         const { domainname } = req.query 
         // this is a descructure of { domainname : value }
         const domains = await domainSchema.find({
