@@ -31,23 +31,23 @@ const domainFilter = async(req, res)=>{
         res.status(404).json(err.message)
     }
 }
-const searchDomains = async(req, res)=>{
-    try{
-        console.log(req.query)
-        const { domainname } = req.query 
-        // this is a descructure of { domainname : value }
-        const domains = await domainSchema.find({
-            '$or':[
-                {domainname:{$regex:`${domainname}`, $options:'i'}},
-                // {domainname:{$regex:`${domainname}`, $options:'i'}},
-            ]})
-        res.status(200).json(domains)
-    }catch(err){
-        res.status(404).json(err.message)
-    }
-}
+// const searchDomains = async(req, res)=>{
+//     try{
+//         console.log(req.query)
+//         const { domainname } = req.query 
+//         // this is a descructure of { domainname : value }
+//         const domains = await domainSchema.find({
+//             '$or':[
+//                 {domainname:{$regex:`${domainname}`, $options:'i'}},
+//                 // {domainname:{$regex:`${domainname}`, $options:'i'}},
+//             ]})
+//         res.status(200).json(domains)
+//     }catch(err){
+//         res.status(404).json(err.message)
+//     }
+// }
 // create a new domain
-const createDomain = async(req, res) =>{
+const createDomain = async (req, res) =>{
 
     const { sitename, domainname } = req.body
     // const { domain } = req.body
@@ -90,4 +90,4 @@ const updateSingleDomain = async (req, res)=>{
 //     createDomain, getSingleDomain, getAllDomains, deleteSingleDomain, updateSingleDomain
 // }
 
-export { createDomain, getSingleDomain, getAllDomains, deleteSingleDomain, updateSingleDomain, domainFilter, searchDomains}
+export { createDomain, getSingleDomain, getAllDomains, deleteSingleDomain, updateSingleDomain, domainFilter}

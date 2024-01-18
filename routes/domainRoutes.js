@@ -1,5 +1,5 @@
 import express from 'express'
-import { createDomain, getSingleDomain, getAllDomains, deleteSingleDomain, updateSingleDomain, domainFilter, searchDomains } from '../controllers/domainController.js'
+import { createDomain, getSingleDomain, getAllDomains, deleteSingleDomain, updateSingleDomain, domainFilter } from '../controllers/domainController.js'
 
 // const express = require('express')
 // const { createDomain, getSingleDomain, getAllDomains, deleteSingleDomain, updateSingleDomain } = require('../controllers/domainController')
@@ -24,7 +24,7 @@ router.post('/', createDomain)
 router.route('/domain/:id').get(getSingleDomain).delete(deleteSingleDomain).patch(updateSingleDomain)
 
 // filter by site and search in domains
-router.get('/search', searchDomains)
+// router.get('/search', searchDomains)
 router.get('/:site', domainFilter)
 
 // module.exports = router
