@@ -23,7 +23,7 @@ const registerUser = asyncHandler(async (req, res) =>{
     const userExist = await userSchema.findOne({email})
 
     if(userExist){
-       return res.status(400).json({error:'The User Exists'})
+       return res.status(400).json('The User Exists')
     }
 
     try{
@@ -31,7 +31,7 @@ const registerUser = asyncHandler(async (req, res) =>{
         generateToken(res, user._id)
         res.status(200).json(user)
     } catch(err){
-        res.status(400).json({error: err.message})
+        res.status(400).json(err.message)
     }
 })
 
