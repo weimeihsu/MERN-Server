@@ -66,7 +66,7 @@ const updateUserProfile = asyncHandler(async (req, res) =>{
         const updatedUser = await user.save()
         res.status(200).json(updatedUser)
     } else {
-        res.status(401).json({message:'User not found'})
+        res.status(401).json('User not found')
     }
 })
 

@@ -55,7 +55,7 @@ const createDomain = async (req, res) =>{
         const domain = await domainSchema.create({ sitename, domainname })
         res.status(200).json(domain)
     } catch(err){
-        res.status(400).json({error: err.message})
+        res.status(400).json(err.message)
     }
 }
 // delete a single domain

@@ -6,4 +6,15 @@ const getAllGenres = async(req, res)=>{
     res.status(200).json(genres)
 }
 
-export { getAllGenres }
+const createGenre = async (req, res) =>{
+
+    const { name } = req.body
+    try{
+        const theGenre = await genreSchema.create({ name })
+        res.status(200).json(theGenre)
+    } catch(err){
+        res.status(400).json(err.message)
+    }
+}
+
+export { getAllGenres, createGenre }
