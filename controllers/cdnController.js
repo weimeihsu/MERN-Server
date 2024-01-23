@@ -1,8 +1,8 @@
-import cdnModale from "../models/cdnModale.js"
+import cdnSchema from "../models/cdnModel.js"
 import mongoose from 'mongoose'
 
 const getAllCNDs = async(req, res)=>{
-    const cdns = await cdnModale.find({})
+    const cdns = await cdnSchema.find({})
     res.status(200).json(cdns)
 }
 

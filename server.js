@@ -12,6 +12,7 @@ import stripeRoutes from './routes/stripeRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import openaiRoutes from './routes/openaiRoutes.js'
 import cdnRoutes from './routes/cdnRoutes.js'
+import genreRoutes from './routes/genreRoutes.js'
 // require('dotenv').config()
 // const express = require('express')
 // const mongoose = require('mongoose')
@@ -45,6 +46,7 @@ app.use('/api/records', recordRoutes)
 app.use('/api/sites', siteRoutes)
 app.use('/api/domains', domainRoutes)
 app.use('/api/cdns', cdnRoutes)
+app.use('/api/genre', genreRoutes)
 app.use('/api/shopItems', shopItemRoutes)
 app.use('/api/checkout', stripeRoutes)
 app.use('/api/users', userRoutes)

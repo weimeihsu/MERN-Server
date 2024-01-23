@@ -29,10 +29,10 @@ const getSingleRecord = async(req, res)=>{
 // create a new record
 const createRecord = async(req, res) =>{
 
-    const {title, category} = req.body
+    const {title, genre} = req.body
 
     try{
-        const record = await recordSchema.create({title, category})
+        const record = await recordSchema.create({title, genre})
         res.status(200).json(record)
     } catch(err){
         res.status(400).json({error: err.message})

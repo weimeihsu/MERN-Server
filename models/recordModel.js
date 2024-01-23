@@ -8,7 +8,7 @@ const recordSchema = new Schema({
         type: String,
         required: true
     },
-    category: {
+    genre: {
         type: String,
         required:true
     }
