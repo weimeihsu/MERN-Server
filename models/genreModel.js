@@ -8,7 +8,7 @@ const genreSchema = new Schema({
         type: String,
         required: true,
     }
-})
+},{timestamps: true})
 
 // module.exports = mongoose.model('cdnSchema', cdnSchema)
 export default mongoose.model('genreSchema', genreSchema)
