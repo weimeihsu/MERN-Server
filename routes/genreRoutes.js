@@ -1,5 +1,5 @@
 import express from 'express'
-import { getAllGenres, createGenre } from '../controllers/genreController.js'
+import { getAllGenres, createGenre, deleteGenre, updateGenre } from '../controllers/genreController.js'
 
 const router = express.Router()
 
@@ -8,4 +8,6 @@ router.get('/', getAllGenres)
 
 router.post('/', createGenre)
 // module.exports = router
+
+router.route('/genre/:id').delete(deleteGenre).patch(updateGenre)
 export default router

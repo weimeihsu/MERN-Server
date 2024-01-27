@@ -7,7 +7,6 @@ const getAllGenres = async(req, res)=>{
 }
 
 const createGenre = async (req, res) =>{
-
     const { name } = req.body
     try{
         const theGenre = await genreSchema.create({ name })
@@ -17,4 +16,30 @@ const createGenre = async (req, res) =>{
     }
 }
 
-export { getAllGenres, createGenre }
+const updateGenre = async (req, res)=>{
+    const {id} = req.params
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(404).json({error:'no such id'})
+    }
+    const theUpdatedGenre = await genreSchema.findOneAndUpdate({_id:id}, {...req.body})
+
+    if(!theUpdatedGenre){
+        return res.status(404).json({error: 'no such genre'})
+    }
+    res.status(200).json(theUpdatedGenre)
+}
+
+const deleteGenre = async (req, res)=>{
+    const {id} = req.params
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(404).json({error:'no such id'})
+    }
+
+    const theGenre = await genreSchema.findOneAndDelete({_id:id})
+
+    if(!theGenre){
+        return res.status(404).json({error: 'no such genre'})
+    }
+    res.status(200).json(theGenre)
+}
+export { getAllGenres, createGenre, deleteGenre, updateGenre }
