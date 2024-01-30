@@ -65,10 +65,20 @@ const updateSingleRecord = async (req, res)=>{
     }
     res.status(200).json(singleRecordUpdate)
 }
+
+const updateRecordGenre = async (req, res)=>{
+    const { oldGenre } = req.query
+    console.log(req.body)
+    const { genre } = req.body
+    // Model.findOneAndUpdate({filter}, {update}, {new:true}) new:true return the updated value
+    const recordGenre = await recordSchema.updateMany({genre:oldGenre}, {genre:genre})
+
+    res.status(200).json(recordGenre)
+}
 // module.exports = {
 //     createRecord, getSingleRecord, getAllRecords, deleteSingleRecord, updateSingleRecord
 // }
 
 export {
-    createRecord, getSingleRecord, getAllRecords, deleteSingleRecord, updateSingleRecord
+    createRecord, getSingleRecord, getAllRecords, deleteSingleRecord, updateSingleRecord, updateRecordGenre
 }

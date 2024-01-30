@@ -1,5 +1,5 @@
 import express from 'express'
-import { createRecord, getSingleRecord, getAllRecords, deleteSingleRecord, updateSingleRecord } from '../controllers/recordController.js'
+import { createRecord, getSingleRecord, getAllRecords, deleteSingleRecord, updateSingleRecord, updateRecordGenre } from '../controllers/recordController.js'
 
 // const express = require('express')
 // const { createRecord, getSingleRecord, getAllRecords, deleteSingleRecord, updateSingleRecord } = require('../controllers/recordController')
@@ -15,6 +15,7 @@ router.get('/:id', getSingleRecord)
 // POST a new item
 router.post('/', createRecord)
 
+router.patch('/updateall', updateRecordGenre)
 // DELETE a single item
 router.delete('/:id', deleteSingleRecord)
 
