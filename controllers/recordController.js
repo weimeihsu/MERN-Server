@@ -14,23 +14,21 @@ const getAllRecords = async(req, res)=>{
     }
 }
 // get a single record
-const getSingleRecord = async(req, res)=>{
-    const {id} = req.params
-    if(!mongoose.Types.ObjectId.isValid(id)){
-        return res.status(404).json({error:'no such id'})
-    }
-    const singleRecord = await recordSchema.findById(id)
+// const getSingleRecord = async(req, res)=>{
+//     const {id} = req.params
+//     if(!mongoose.Types.ObjectId.isValid(id)){
+//         return res.status(404).json({error:'no such id'})
+//     }
+//     const singleRecord = await recordSchema.findById(id)
 
-    if(!singleRecord){
-        return res.status(404).json({error: 'no such record'})
-    }
-    res.status(200).json(singleRecord)
-}
+//     if(!singleRecord){
+//         return res.status(404).json({error: 'no such record'})
+//     }
+//     res.status(200).json(singleRecord)
+// }
 // create a new record
 const createRecord = async(req, res) =>{
-
     const {title, genre} = req.body
-
     try{
         const record = await recordSchema.create({title, genre})
         res.status(200).json(record)
@@ -66,19 +64,28 @@ const updateSingleRecord = async (req, res)=>{
     res.status(200).json(singleRecordUpdate)
 }
 
+const genreFilter = async(req, res)=>{
+    try{
+        const { genre } = req.params
+        const result = await recordSchema.find({genre:genre})
+        res.status(200).json(result)
+    }catch(err){
+        res.status(404).json(err.message)
+    }
+}
+
 const updateRecordGenre = async (req, res)=>{
     const { oldGenre } = req.query
-    console.log(req.body)
     const { genre } = req.body
     // Model.findOneAndUpdate({filter}, {update}, {new:true}) new:true return the updated value
-    const recordGenre = await recordSchema.updateMany({genre:oldGenre}, {genre:genre})
+    const result = await recordSchema.updateMany({genre:oldGenre}, {genre:genre})
 
-    res.status(200).json(recordGenre)
+    res.status(200).json(result)
 }
 // module.exports = {
 //     createRecord, getSingleRecord, getAllRecords, deleteSingleRecord, updateSingleRecord
 // }
 
 export {
-    createRecord, getSingleRecord, getAllRecords, deleteSingleRecord, updateSingleRecord, updateRecordGenre
+    createRecord, getAllRecords, deleteSingleRecord, updateSingleRecord, updateRecordGenre, genreFilter
 }

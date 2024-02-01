@@ -1,21 +1,18 @@
 import express from 'express'
-import { createRecord, getSingleRecord, getAllRecords, deleteSingleRecord, updateSingleRecord, updateRecordGenre } from '../controllers/recordController.js'
+import { createRecord, getAllRecords, deleteSingleRecord, updateSingleRecord, updateRecordGenre, genreFilter } from '../controllers/recordController.js'
 
 // const express = require('express')
 // const { createRecord, getSingleRecord, getAllRecords, deleteSingleRecord, updateSingleRecord } = require('../controllers/recordController')
 
 const router = express.Router()
 
-// GET all items
-router.get('/', getAllRecords)
+router.route('/').get(getAllRecords).post(createRecord)
 
-// GET a single items
-router.get('/:id', getSingleRecord)
+// filter
+router.get('/filter/:genre', genreFilter)
 
-// POST a new item
-router.post('/', createRecord)
+router.patch('/updateRecordGenre', updateRecordGenre)
 
-router.patch('/updateall', updateRecordGenre)
 // DELETE a single item
 router.delete('/:id', deleteSingleRecord)
 
