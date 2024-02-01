@@ -1,4 +1,5 @@
 import express from 'express'
+import multer from 'multer'
 import { createRecord, getAllRecords, deleteSingleRecord, updateSingleRecord, updateRecordGenre, genreFilter } from '../controllers/recordController.js'
 
 // const express = require('express')
@@ -6,7 +7,18 @@ import { createRecord, getAllRecords, deleteSingleRecord, updateSingleRecord, up
 
 const router = express.Router()
 
-router.route('/').get(getAllRecords).post(createRecord)
+const storage = multer.diskStorage({
+    destination: (req, file, callback)=>{
+        return callback(null, '../uploadedPhotos')
+    },
+    filename: (req, file, callback)=>{
+        return callback(null, `${Date.now()}_${file.originalname}`)
+    }
+})
+
+const upload = multer({storage})
+
+router.route('/').get(getAllRecords).post(upload.single('file'), createRecord)
 
 // filter
 router.get('/filter/:genre', genreFilter)

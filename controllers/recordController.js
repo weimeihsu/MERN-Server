@@ -29,6 +29,7 @@ const getAllRecords = async(req, res)=>{
 // create a new record
 const createRecord = async(req, res) =>{
     const {title, genre} = req.body
+    console.log(req.file)
     try{
         const record = await recordSchema.create({title, genre})
         res.status(200).json(record)
