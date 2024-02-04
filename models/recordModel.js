@@ -10,7 +10,9 @@ const recordSchema = new Schema({
     },
     genre: {
         type: String,
-        required:false
+    },
+    img: {
+        type: String
     }
 }, {timestamps: true})
 

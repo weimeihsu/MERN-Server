@@ -18,7 +18,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage})
 
-router.route('/').get(getAllRecords).post(upload.single('file'), createRecord)
+router.route('/').get(getAllRecords).post(createRecord)
 
 // filter
 router.get('/filter/:genre', genreFilter)
