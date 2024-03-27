@@ -13,20 +13,20 @@ const getAllRecords = async(req, res)=>{
         res.status(400).json({error: err.message})
     }
 }
-// get a single record
-// const getSingleRecord = async(req, res)=>{
-//     const {id} = req.params
-//     if(!mongoose.Types.ObjectId.isValid(id)){
-//         return res.status(404).json({error:'no such id'})
-//     }
-//     const singleRecord = await recordSchema.findById(id)
 
-//     if(!singleRecord){
-//         return res.status(404).json({error: 'no such record'})
-//     }
-//     res.status(200).json(singleRecord)
-// }
-// create a new record
+// create a new record backup
+const createRecordImg = async(req, res) =>{
+    const {title, genre, img} = req.body
+
+    console.log(req.body)
+    try{
+        const record = await recordSchema.create({title, genre, img})
+        res.status(200).json(record)
+    } catch(err){
+        res.status(400).json({error: err.message})
+    }
+}
+// create a new record backup
 const createRecord = async(req, res) =>{
     const {title, genre, img} = req.body
     console.log(req.body)
