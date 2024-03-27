@@ -27,10 +27,10 @@ const PORT = process.env.PORT
 const app = express()
 
 // express.json() this will look into the requst body and parsin json format It parses incoming requests with JSON payloads and is based on body-parser.
-app.use(express.json())
+app.use(express.json({limit : '50mb',extended : true}))
 app.use(cookieParser())
 // urlencoded parses incoming requests with URL-encoded payloads and is based on a body parser.
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({extended: true, limit: '50mb'}))
 
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
