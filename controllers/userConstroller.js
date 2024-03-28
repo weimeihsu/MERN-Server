@@ -1,7 +1,9 @@
 import asyncHandler from 'express-async-handler'
 import userSchema from '../models/userModel.js'
 import generateToken from '../utils/generateToken.js'
-// route POST /api/users/auth -> this is login
+
+// route POST /api/users/auth -> user login
+// @access publich
 const authUser = asyncHandler(async (req, res) =>{
     const {email, password} = req.body
 
@@ -11,11 +13,12 @@ const authUser = asyncHandler(async (req, res) =>{
         generateToken(res, user._id)
         res.status(200).json(user)
     } else {
-        res.status(400).json('Invalid Email or Password')
+        res.status(401).json('Invalid Email or Password')
     }
 })
 
-// route POST /api/users = create a user
+// route POST /api/users -> user register
+// @access publich
 const registerUser = asyncHandler(async (req, res) =>{
     // console.log(req.body)
     
@@ -23,19 +26,19 @@ const registerUser = asyncHandler(async (req, res) =>{
     const userExist = await userSchema.findOne({email})
 
     if(userExist){
-       return res.status(400).json('The User Exists')
+       return res.status(401).json('The User Exists')
     }
-
     try{
         const user = await userSchema.create({email, password})
         generateToken(res, user._id)
         res.status(200).json(user)
     } catch(err){
-        res.status(400).json(err.message)
+        res.status(401).json(err.message)
     }
 })
 
 // route POST /api/users/logout
+// @access publich
 const logoutUser = asyncHandler(async (req, res) =>{
     res.cookie('jwt', '', {
         httpOnly: true,
@@ -45,6 +48,7 @@ const logoutUser = asyncHandler(async (req, res) =>{
 })
 
 // route GET /api/users/profile
+// @access private
 const getUserProfile = asyncHandler(async (req, res) =>{
     // const req.body will return all data of this user. destructure the user and only get back necessary info
     const user = {
@@ -55,6 +59,7 @@ const getUserProfile = asyncHandler(async (req, res) =>{
 })
 
 // route PUT /api/users/profile
+// @access private
 const updateUserProfile = asyncHandler(async (req, res) =>{
     const user = await userSchema.findById(req.user._id)
 

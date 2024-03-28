@@ -26,8 +26,8 @@ import genreRoutes from './routes/genreRoutes.js'
 const PORT = process.env.PORT
 const app = express()
 
-// express.json() this will look into the requst body and parsin json format It parses incoming requests with JSON payloads and is based on body-parser.
-app.use(express.json({limit : '50mb',extended : true}))
+// express.json() this will look into the http requst body and parsin json format It parses incoming requests with JSON payloads and is based on body-parser.
+app.use(express.json({extended: true, limit: '50mb'}))
 app.use(cookieParser())
 // urlencoded parses incoming requests with URL-encoded payloads and is based on a body parser.
 app.use(express.urlencoded({extended: true, limit: '50mb'}))
